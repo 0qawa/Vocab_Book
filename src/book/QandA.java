@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class QandA {
     public String question, answer;
     public Float correctRate;   //正答率
-    public int num_res = 0, num_correct = 0;   //回答回数、正解回数
+    public Integer num_res = 0, num_correct = 0;   //回答回数、正解回数
     
     public QandA(String q, String a, float rate){
         question = q;
@@ -58,6 +58,8 @@ public class QandA {
         line.add(question);
         line.add(answer);
         line.add(correctRate.toString());
+        line.add(num_res.toString());
+        line.add(num_correct.toString());
         return line;
     }
 }
