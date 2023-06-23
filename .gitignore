@@ -1,0 +1,7 @@
+/dist/
+/build/
+# add by user
+/nbproject/private/
+/nbbuild/
+/nbdist/
+/.nb-gradle/
