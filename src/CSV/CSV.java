@@ -8,6 +8,46 @@ package CSV;
  *
  * @author ogawa
  */
+
+/*
+<CSVのメソッド使い方>
+・Input(String 問題, String 答え)
+　データベースに問題を追加
+
+・Output(int 問題番号)
+　問題を受け取る(QandAクラスの値が帰ってくる)
+
+・Delete(int 問題番号)
+　問題を削除
+
+・AllClear()
+　問題を全て削除
+
+・CorrectRate(int 問題番号, float 正答率)
+  正答率を入力
+
+・MakeCSV()
+　CSVファイルを作成、書き込み
+　※ファイルは「NetBeansProjects\Vocab_Book\data」にある
+
+・ReadCSV()
+　data.csvを読み込み
+    
+
+    例)
+    public static void main(String[] args) {
+        CSV data = new CSV();
+        data.ReadCSV();  //毎回必ずファイルを読み込むなら、CSVクラスのコンストラクタに書いておいても〇
+        data.AllClear();
+        data.Input("天下統一を成したのは？","豊臣秀吉");
+        data.Input("江戸幕府を開いたのは？","徳川家康");
+        data.Delete(0);
+        data.MakeCSV();
+        //1
+    }
+
+*/
+
 import book.QandA;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,7 +84,6 @@ public class CSV {
         this.data = new ArrayList<>();
         dataDir = new File("." + File.separator + "data");
         dataDir.mkdirs();
-        CSV.ReadCSV();
     }
     
     //問題と答えを受け取って、データベースにセット
@@ -162,17 +201,6 @@ public class CSV {
             return QA;
         }
         return null;
-    }
-    
-    public static void main(String[] args) {
-        // TODO code application logic here
-        CSV data = new CSV();
-        data.AllClear();
-        data.Input("天下統一を成したのは？","豊臣秀吉");
-        data.Input("江戸幕府を開いたのは？","徳川家康");
-        data.Delete(0);
-        data.MakeCSV();
-        //1
     }
     
 }
