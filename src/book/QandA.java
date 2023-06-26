@@ -13,12 +13,15 @@ import java.util.ArrayList;
 public class QandA {
     public String question, answer;
     public Float correctRate;   //正答率
-    public Integer num_res = 0, num_correct = 0;   //回答回数、正解回数
+    public Integer num_res, num_correct;   //回答回数、正解回数
+    public float zero = 0;
     
-    public QandA(String q, String a, float rate){
+    public QandA(String q, String a){
         question = q;
         answer = a;
-        correctRate = rate;
+        correctRate = zero;
+        num_res = 0;
+        num_correct = 0;
     }
 
     public String getQuestion() {
@@ -40,9 +43,17 @@ public class QandA {
     public int getNum_correct() {
         return num_correct;
     }
-    
-    public void SetRate(float rate){
-        correctRate = rate;
+
+    public void setCorrectRate(Float correctRate) {
+        this.correctRate = correctRate;
+    }
+
+    public void setNum_res(Integer num_res) {
+        this.num_res = num_res;
+    }
+
+    public void setNum_correct(Integer num_correct) {
+        this.num_correct = num_correct;
     }
     
     public void CountNum_res(){

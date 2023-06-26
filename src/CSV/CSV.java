@@ -15,9 +15,13 @@ import java.util.HashMap;
 
 
 import java.awt.Point;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -25,24 +29,27 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 //ArrayListでHashMapを制御
 public class CSV {
     public static ArrayList<QandA> data;
     private static File dataFile = null;
     private static PrintWriter writer = null;
+    private static BufferedReader reader = null;
     private static File dataDir;
     
     public CSV(){
         this.data = new ArrayList<>();
         dataDir = new File("." + File.separator + "data");
         dataDir.mkdirs();
+        //CSV.ReadCSV();
     }
     
     //問題と答えを受け取って、データベースにセット
     public static void Input(String question, String answer){
-        float zero = 0;
-        QandA QArate = new QandA(question, answer, zero);
+        QandA QArate = new QandA(question, answer);
         data.add(QArate);
     }
     
@@ -58,13 +65,25 @@ public class CSV {
     
     //問題番号によって、正答率を入力
     public static void CorrectRate(int number, float rate){
-        data.get(number).SetRate(rate);
+        data.get(number).setCorrectRate(rate);
+    }
+    
+    //CSVに保存する
+    public static void MakeCSV(){
+        String filename = "data.csv";
+        dataFile = new File(dataDir.getPath() + File.separator + filename);
+        try{
+            CSV.setOutputFile(dataFile);
+            CSV.outputAllData(dataFile);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(CSV.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public static void setOutputFile(File datafile) throws FileNotFoundException{
         //dataFile = datafile;
         try {
-            writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(datafile),"UTF-8"));
+            writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(datafile),"Shift-JIS"));
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(CSV.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -80,8 +99,9 @@ public class CSV {
     
     public static void outputAllData(File datafile) throws FileNotFoundException{
         try { 
-            PrintWriter output = new PrintWriter(new OutputStreamWriter(new FileOutputStream(datafile),"UTF-8"));
+            PrintWriter output = new PrintWriter(new OutputStreamWriter(new FileOutputStream(datafile),"Shift-JIS"));
             
+            //System.out.println(data.size());
             for(int i = 0;i < data.size();i++){
                 ArrayList<String> line = data.get(0).ToString();
                 for(String elem:line){
@@ -99,15 +119,40 @@ public class CSV {
         }
     }
     
-    //CSVに保存する
-    public static void MakeCSV(){
+    //CSVから読み込む
+    public static void ReadCSV(){
+        String line;
         String filename = "data.csv";
         dataFile = new File(dataDir.getPath() + File.separator + filename);
         try{
-            CSV.setOutputFile(dataFile);
-            CSV.outputAllData(dataFile);
+            reader = new BufferedReader(new InputStreamReader(new FileInputStream(dataFile),"Shift-JIS"));
+            while((line = reader.readLine()) != null){
+                data.add(CSV.parseLineWithPattearn(line));
+            }
+            reader.close();
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(CSV.class.getName()).log(Level.SEVERE, null, ex);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(CSV.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(CSV.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println("IOException");
         }
+    }
+    
+    private static Pattern ptn = Pattern.compile("(.*),(.*),(1?[0-9]{1,2}.[0-9]+),([0-9]+),([0-9]+)");
+    public static QandA parseLineWithPattearn(String line){
+        Matcher mc = ptn.matcher(line);
+        if(mc.matches()){
+            float corrRate = Float.parseFloat(mc.group(3));
+            int ResNum = Integer.parseInt(mc.group(4));
+            int corrNum = Integer.parseInt(mc.group(5));
+            QandA QA = new QandA(mc.group(1), mc.group(2));
+            QA.setCorrectRate(corrRate);
+            QA.setNum_res(ResNum);
+            QA.setNum_correct(corrNum);
+            return QA;
+        }
+        return null;
     }
 }

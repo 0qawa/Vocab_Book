@@ -17,8 +17,8 @@ public class Book {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        String q = "what";
-        String a = "I don't know";
+        String q = "なんでしょう？";
+        String a = "知らない";
         CSV b = new CSV();
         
         b.Input(q,a);
