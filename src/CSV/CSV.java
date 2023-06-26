@@ -44,7 +44,7 @@ public class CSV {
         this.data = new ArrayList<>();
         dataDir = new File("." + File.separator + "data");
         dataDir.mkdirs();
-        //CSV.ReadCSV();
+        CSV.ReadCSV();
     }
     
     //問題と答えを受け取って、データベースにセット
@@ -59,8 +59,13 @@ public class CSV {
     }
     
     //問題番号によって、問題を削除
-    public static void Remove(int number){
+    public static void Delete(int number){
         data.remove(number);
+    }
+    
+    //全削除
+    public static void AllClear(){
+        data = new ArrayList<>();
     }
     
     //問題番号によって、正答率を入力
@@ -101,9 +106,8 @@ public class CSV {
         try { 
             PrintWriter output = new PrintWriter(new OutputStreamWriter(new FileOutputStream(datafile),"Shift-JIS"));
             
-            //System.out.println(data.size());
             for(int i = 0;i < data.size();i++){
-                ArrayList<String> line = data.get(0).ToString();
+                ArrayList<String> line = data.get(i).ToString();
                 for(String elem:line){
                     output.print(elem);
                     System.out.println(elem);
@@ -127,7 +131,10 @@ public class CSV {
         try{
             reader = new BufferedReader(new InputStreamReader(new FileInputStream(dataFile),"Shift-JIS"));
             while((line = reader.readLine()) != null){
-                data.add(CSV.parseLineWithPattearn(line));
+                QandA dt = CSV.parseLineWithPattearn(line);
+                if(dt!=null){
+                    data.add(dt);
+                }
             }
             reader.close();
         } catch (UnsupportedEncodingException ex) {
@@ -140,10 +147,11 @@ public class CSV {
         }
     }
     
-    private static Pattern ptn = Pattern.compile("(.*),(.*),(1?[0-9]{1,2}.[0-9]+),([0-9]+),([0-9]+)");
+    private static Pattern ptn = Pattern.compile("(.*),(.*),(1?[0-9]{1,2}.[0-9]+),([0-9]+),([0-9]+),");
     public static QandA parseLineWithPattearn(String line){
         Matcher mc = ptn.matcher(line);
         if(mc.matches()){
+            System.out.println("ok");
             float corrRate = Float.parseFloat(mc.group(3));
             int ResNum = Integer.parseInt(mc.group(4));
             int corrNum = Integer.parseInt(mc.group(5));
@@ -155,4 +163,16 @@ public class CSV {
         }
         return null;
     }
+    
+    public static void main(String[] args) {
+        // TODO code application logic here
+        CSV data = new CSV();
+        data.AllClear();
+        data.Input("天下統一を成したのは？","豊臣秀吉");
+        data.Input("江戸幕府を開いたのは？","徳川家康");
+        data.Delete(0);
+        data.MakeCSV();
+        //1
+    }
+    
 }
