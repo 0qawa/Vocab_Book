@@ -5,6 +5,7 @@
 package book;
 
 import CSV.CSV;
+import GUI.syoki;
 
 /**
  *
@@ -18,5 +19,8 @@ public class Book {
     public static void main(String[] args) {
         // TODO code application logic here
         //1
+        syoki f = new syoki();
+        f.setVisible(true);
     }
 }
+

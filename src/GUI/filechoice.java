@@ -27,20 +27,25 @@ public class filechoice extends javax.swing.JFrame {
     private void initComponents() {
 
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        modoru = new javax.swing.JButton();
+        touroku = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTextField1.setText("jTextField1");
 
-        jButton1.setText("戻る");
-
-        jButton2.setText("登録");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        modoru.setText("戻る");
+        modoru.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                modoruActionPerformed(evt);
+            }
+        });
+
+        touroku.setText("登録");
+        touroku.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tourokuActionPerformed(evt);
             }
         });
 
@@ -52,9 +57,9 @@ public class filechoice extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(62, 62, 62)
-                .addComponent(jButton1)
+                .addComponent(modoru)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(touroku)
                 .addGap(77, 77, 77))
             .addGroup(layout.createSequentialGroup()
                 .addGap(155, 155, 155)
@@ -72,17 +77,27 @@ public class filechoice extends javax.swing.JFrame {
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(modoru)
+                    .addComponent(touroku))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void tourokuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tourokuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        filename fn = new filename();
+        fn.show();
+        dispose();
+    }//GEN-LAST:event_tourokuActionPerformed
+
+    private void modoruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoruActionPerformed
+        // TODO add your handling code here:
+        syoki sk = new syoki();
+        sk.show();
+        dispose();
+    }//GEN-LAST:event_modoruActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,9 +135,9 @@ public class filechoice extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton modoru;
+    private javax.swing.JButton touroku;
     // End of variables declaration//GEN-END:variables
 }

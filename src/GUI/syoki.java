@@ -38,7 +38,7 @@ public class syoki extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("参照");
+        jButton2.setText("続き");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -72,16 +72,26 @@ public class syoki extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //新規ファイル名入力画面へ切り替え
-        filename fn = new filename();
-        fn.show();
+        //filename fn = new filename();
+        //fn.show();
+        //dispose();
+        //メニュー画面へ切り替え
+        menu mn = new menu();
+        mn.show();
         dispose();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        filechoice fc = new filechoice();
-        fc.show();
-        dispose();        
+        //ファイル選択画面へ
+        //filechoice fc = new filechoice();
+        //fc.show();
+        //dispose();
+        //メニュー画面へ
+        menu mn = new menu();
+        mn.show();
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -117,6 +127,8 @@ public class syoki extends javax.swing.JFrame {
                 new syoki().setVisible(true);
             }
         });
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
