@@ -18,31 +18,63 @@ import java.util.Random;
  * @author sugi
  */
 public class Study {
+
     private CSV csvlist; //参照するデータ(CSVクラス)
     private ArrayList<QandA> list; //参照するデータ
     private int ID; //出題する問題番号
     private QandA QA; //出題する問題(QandAクラス)
     private int n_res, n_cor; //問題の回答回数、正答回数
     private float newrate; //問題回答後の新しい正解率
+    private ArrayList<Float> ratelist; //問題の出題に使用する確率のリスト
+    private float totalrate; //問題の出題に使用するパラメータ
 
     public Study(CSV csv) {
         csvlist = csv;
         list = csvlist.getData();
     }
 
-    //出題する問題をランダムにセットする
+    //出題する問題をセットする
     public QandA setQA() {
         int size;
-        Random rand = new Random();
-        size = list.size();
-        ID = rand.nextInt(size);
+        ID = setID();
         QA = csvlist.Output(ID);
         return QA;
+    }
+
+    //ratelistに値を設定する
+    private void setrate() {
+        ratelist.clear();
+        totalrate = 0;
+        for (QandA qalist : list) {
+            float rate = qalist.getCorrectRate() + 1;
+            ratelist.add(rate);
+            totalrate += rate;
+        }
+    }
+
+    //出題する問題のIDを選択する
+    private int setID() {
+        setrate();
+        Random rand = new Random();
+        float id_f = rand.nextFloat() * totalrate;
+        float sum_select = 0;
+        float sum_select_be = 0;
+        int i = 0;
+        for (float select:ratelist){
+            sum_select += select;
+            if((sum_select_be <= id_f) && (id_f < sum_select)){
+                return i;
+            }
+            i++;
+            sum_select_be = sum_select;
+        }
+        return i;
     }
 
     //問題番号を返す
     public int getID() {
         return ID;
+
     }
 
     //正解率を返す
