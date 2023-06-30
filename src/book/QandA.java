@@ -43,6 +43,13 @@ public class QandA {
     public int getNum_correct() {
         return num_correct;
     }
+    
+    public String[] ToArray(){
+        String[] d = null;
+        d[0] = question;
+        d[1] = answer;
+        return d;
+    }
 
     public void setCorrectRate(Float correctRate) {
         this.correctRate = correctRate;

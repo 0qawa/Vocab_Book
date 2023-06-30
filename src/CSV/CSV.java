@@ -26,6 +26,9 @@ package CSV;
 ・getData()
 　データ全体を取得(ArrayList<QandA>が帰ってくる)
 
+・DataArray()
+　問題と答えだけのデータを配列として取得(String[][]が帰ってくる)
+
 ・CorrectRate(int 問題番号, float 正答率)
   正答率を入力
 
@@ -117,6 +120,15 @@ public class CSV {
     //問題番号によって、正答率を入力
     public static void CorrectRate(int number, float rate){
         data.get(number).setCorrectRate(rate);
+    }
+    
+    public static String[][] DataArray(){
+        String[][] d = null;
+        for(int i=0;i<data.size();i++){
+            String[] w = data.get(i).ToArray();
+            d[i] = w;
+        }
+        return d;
     }
     
     //CSVに保存する
