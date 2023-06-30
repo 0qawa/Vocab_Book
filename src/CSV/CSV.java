@@ -15,13 +15,16 @@ package CSV;
 　データベースに問題を追加
 
 ・Output(int 問題番号)
-　問題を受け取る(QandAクラスの値が帰ってくる)
+　問題を取得(QandAクラスの値が帰ってくる)
 
 ・Delete(int 問題番号)
 　問題を削除
 
 ・AllClear()
 　問題を全て削除
+
+・getData()
+　データ全体を取得(ArrayList<QandA>が帰ってくる)
 
 ・CorrectRate(int 問題番号, float 正答率)
   正答率を入力
@@ -95,6 +98,10 @@ public class CSV {
     //問題番号によって、問題を受け取る
     public static QandA Output(int number){
         return data.get(number);
+    }
+
+    public static ArrayList<QandA> getData() {
+        return data;
     }
     
     //問題番号によって、問題を削除
