@@ -4,6 +4,8 @@
  */
 package GUI;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Toui Kodera
@@ -26,31 +28,118 @@ public class quiz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        num = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        percent = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        question = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        modoru = new javax.swing.JButton();
+        kaitou = new javax.swing.JButton();
+
+        jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("jLabel1");
+        num.setText("jLabel1");
+
+        jLabel2.setText("問目");
+
+        jLabel3.setText("正解率");
+
+        percent.setText("jLabel4");
+
+        jLabel5.setText("%");
+
+        question.setText("question");
+
+        jTextField1.setText("jTextField1");
+
+        modoru.setText("戻る");
+        modoru.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modoruActionPerformed(evt);
+            }
+        });
+
+        kaitou.setText("解答");
+        kaitou.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kaitouActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel1)
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(171, 171, 171)
+                        .addComponent(question))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(num)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(modoru)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(98, 98, 98)
+                                        .addComponent(jLabel3)))))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(percent)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel5))
+                            .addComponent(kaitou))))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(jLabel1)
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(num)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(percent)
+                    .addComponent(jLabel5))
+                .addGap(38, 38, 38)
+                .addComponent(question)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(modoru)
+                    .addComponent(kaitou))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void modoruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoruActionPerformed
+        // TODO add your handling code here:
+        //結果画面へ切り替え
+        result rs = new result();
+        rs.show();
+        dispose();
+    }//GEN-LAST:event_modoruActionPerformed
+
+    private void kaitouActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kaitouActionPerformed
+        // TODO add your handling code here:
+        //問題の結果表示
+        JOptionPane.showMessageDialog(this, "正解","結果", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "不正解","結果", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_kaitouActionPerformed
 
     /**
      * @param args the command line arguments
@@ -88,6 +177,15 @@ public class quiz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JButton kaitou;
+    private javax.swing.JButton modoru;
+    private javax.swing.JLabel num;
+    private javax.swing.JLabel percent;
+    private javax.swing.JLabel question;
     // End of variables declaration//GEN-END:variables
 }

@@ -108,10 +108,11 @@ public class datain extends javax.swing.JFrame {
 
     private void modoruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoruActionPerformed
         // TODO add your handling code here:
-        //結果画面へ切り替え
-        result rs = new result();
-        rs.show();
+        //メニュー画面へ切り替え
+        menu mn = new menu();
+        mn.show();
         dispose();
+
     }//GEN-LAST:event_modoruActionPerformed
 
     /**
