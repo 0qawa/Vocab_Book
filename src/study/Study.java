@@ -19,14 +19,14 @@ import java.util.Random;
  */
 public class Study {
 
-    private CSV csvlist; //参照するデータ(CSVクラス)
-    private ArrayList<QandA> list; //参照するデータ
-    private int ID; //出題する問題番号
-    private QandA QA; //出題する問題(QandAクラス)
-    private int n_res, n_cor; //問題の回答回数、正答回数
-    private float newrate; //問題回答後の新しい正解率
-    private ArrayList<Float> ratelist; //問題の出題に使用する確率のリスト
-    private float totalrate; //問題の出題に使用するパラメータ
+    private static CSV csvlist; //参照するデータ(CSVクラス)
+    private static ArrayList<QandA> list; //参照するデータ
+    private static int ID; //出題する問題番号
+    private static QandA QA; //出題する問題(QandAクラス)
+    private static int n_res, n_cor; //問題の回答回数、正答回数
+    private static float newrate; //問題回答後の新しい正解率
+    private static ArrayList<Float> ratelist; //問題の出題に使用する確率のリスト
+    private static float totalrate; //問題の出題に使用するパラメータ
 
     public Study(CSV csv) {
         csvlist = csv;
@@ -34,7 +34,7 @@ public class Study {
     }
 
     //出題する問題をセットする
-    public QandA setQA() {
+    public static QandA setQA() {
         int size;
         ID = setID();
         QA = csvlist.Output(ID);
@@ -42,7 +42,7 @@ public class Study {
     }
 
     //ratelistに値を設定する
-    private void setrate() {
+    private static void setrate() {
         ratelist.clear();
         totalrate = 0;
         for (QandA qalist : list) {
@@ -53,7 +53,7 @@ public class Study {
     }
 
     //出題する問題のIDを選択する
-    private int setID() {
+    private static int setID() {
         setrate();
         Random rand = new Random();
         float id_f = rand.nextFloat() * totalrate;
@@ -72,18 +72,18 @@ public class Study {
     }
 
     //問題番号を返す
-    public int getID() {
+    public static int getID() {
         return ID;
 
     }
 
     //正解率を返す
-    public float getnewrate() {
+    public static float getnewrate() {
         return newrate;
     }
 
     //回答の正誤判定をし、"正解"または"不正解"の文字列を返す
-    public String judge(String answer) {
+    public static String judge(String answer) {
         if (answer.equals(QA.getAnswer())) {
             n_res = QA.getNum_res() + 1;
             n_cor = QA.getNum_correct() + 1;
