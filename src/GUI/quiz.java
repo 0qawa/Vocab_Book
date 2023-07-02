@@ -5,6 +5,7 @@
 package GUI;
 
 import javax.swing.JOptionPane;
+import study.Study;
 
 /**
  *
@@ -149,9 +150,11 @@ public class quiz extends javax.swing.JFrame {
 
     private void kaitouActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kaitouActionPerformed
         // TODO add your handling code here:
-        //問題の結果表示
-        JOptionPane.showMessageDialog(this, "正解","結果", JOptionPane.INFORMATION_MESSAGE);
-        JOptionPane.showMessageDialog(this, "不正解","結果", JOptionPane.INFORMATION_MESSAGE);
+        //入力された解答を受け取る
+        String Ans = this.answer.getText();
+        //正誤判定した結果を受け取る
+        String Res = Study.judge(Ans);
+        JOptionPane.showMessageDialog(this,Res,"結果", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_kaitouActionPerformed
 
     /**
