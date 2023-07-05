@@ -27,9 +27,9 @@ public class result extends javax.swing.JFrame {
     private void initComponents() {
 
         OK = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        sum_num = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        cor_num = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -42,11 +42,11 @@ public class result extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("jLabel1");
+        sum_num.setText("sum_num");
 
         jLabel2.setText("問中");
 
-        jLabel3.setText("jLabel3");
+        cor_num.setText("cor_num");
 
         jLabel4.setText("問");
 
@@ -63,25 +63,25 @@ public class result extends javax.swing.JFrame {
                         .addComponent(OK))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(110, 110, 110)
-                        .addComponent(jLabel1)
+                        .addComponent(sum_num)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3)
+                        .addComponent(cor_num)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)))
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(59, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(sum_num)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3)
+                    .addComponent(cor_num)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
                 .addGap(29, 29, 29)
@@ -137,10 +137,10 @@ public class result extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton OK;
-    private javax.swing.JLabel jLabel1;
+    public static javax.swing.JLabel cor_num;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    public static javax.swing.JLabel sum_num;
     // End of variables declaration//GEN-END:variables
 }

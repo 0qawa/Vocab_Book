@@ -145,7 +145,7 @@ public class filename extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton modoru;
-    private javax.swing.JTextField name;
+    public static javax.swing.JTextField name;
     private javax.swing.JButton touroku;
     // End of variables declaration//GEN-END:variables
 }

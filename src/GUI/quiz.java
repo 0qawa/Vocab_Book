@@ -33,7 +33,7 @@ public class quiz extends javax.swing.JFrame {
         num = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        percent = new javax.swing.JLabel();
+        per = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         question = new javax.swing.JLabel();
         answer = new javax.swing.JTextField();
@@ -46,13 +46,13 @@ public class quiz extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        num.setText("jLabel1");
+        num.setText("num");
 
         jLabel2.setText("問目");
 
         jLabel3.setText("正解率");
 
-        percent.setText("jLabel4");
+        per.setText("per");
 
         jLabel5.setText("%");
 
@@ -106,11 +106,11 @@ public class quiz extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(percent)
+                        .addComponent(per)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel5))
                     .addComponent(kaitou))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,7 +120,7 @@ public class quiz extends javax.swing.JFrame {
                     .addComponent(num)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
-                    .addComponent(percent)
+                    .addComponent(per)
                     .addComponent(jLabel5))
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -146,6 +146,12 @@ public class quiz extends javax.swing.JFrame {
         result rs = new result();
         rs.show();
         dispose();
+        
+        //総問題数と正解数を表示
+        result.sum_num.setText("１");
+        result.cor_num.setText("１");
+        
+        
     }//GEN-LAST:event_modoruActionPerformed
 
     private void kaitouActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kaitouActionPerformed
@@ -190,10 +196,11 @@ public class quiz extends javax.swing.JFrame {
                 new quiz().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField answer;
+    public static javax.swing.JTextField answer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -202,8 +209,8 @@ public class quiz extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JButton kaitou;
     private javax.swing.JButton modoru;
-    private javax.swing.JLabel num;
-    private javax.swing.JLabel percent;
-    private javax.swing.JLabel question;
+    public static javax.swing.JLabel num;
+    public static javax.swing.JLabel per;
+    public static javax.swing.JLabel question;
     // End of variables declaration//GEN-END:variables
 }

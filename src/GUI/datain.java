@@ -154,11 +154,11 @@ public class datain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField answer;
+    public static javax.swing.JTextField answer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton modoru;
-    private javax.swing.JTextField question;
+    public static javax.swing.JTextField question;
     private javax.swing.JButton touroku;
     // End of variables declaration//GEN-END:variables
 }

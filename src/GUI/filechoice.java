@@ -34,6 +34,11 @@ public class filechoice extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         name.setText("name");
+        name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameActionPerformed(evt);
+            }
+        });
 
         modoru.setText("戻る");
         modoru.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +107,10 @@ public class filechoice extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_modoruActionPerformed
 
+    private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -140,7 +149,7 @@ public class filechoice extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton modoru;
-    private javax.swing.JTextField name;
+    public static javax.swing.JTextField name;
     private javax.swing.JButton touroku;
     // End of variables declaration//GEN-END:variables
 }

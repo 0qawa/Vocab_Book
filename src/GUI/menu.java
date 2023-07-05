@@ -110,6 +110,13 @@ public class menu extends javax.swing.JFrame {
         quiz qz  = new quiz();
         qz.show();
         dispose();
+        
+        //quizタブの問題を表示
+        quiz.question.setText("問題");
+        //quizタブの最初の問題番号と正答率を表示
+        quiz.num.setText("１");
+        quiz.per.setText("１");
+        
     }//GEN-LAST:event_gakusyuActionPerformed
 
     /**
@@ -145,10 +152,11 @@ public class menu extends javax.swing.JFrame {
                 new menu().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton gakusyu;
+    public javax.swing.JButton gakusyu;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton modoru;
     private javax.swing.JButton nyuryoku;
