@@ -71,6 +71,10 @@ public class Study {
         return i;
     }
     
+    public static void setCSV(CSV csv){
+        csvlist = csv;
+    }
+    
     //CSVクラスを返す
     public static CSV getCSV(){
         return csvlist;
