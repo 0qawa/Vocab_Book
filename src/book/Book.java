@@ -21,8 +21,9 @@ public class Book {
         //1
         syoki f = new syoki();
         f.setVisible(true);
+        
         csv.ReadCSV();
     }
     
-    public static CSV csv;
+    public static CSV csv = new CSV();
 }
