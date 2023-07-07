@@ -123,7 +123,7 @@ public class CSV {
     }
     
     public static String[][] DataArray(){
-        String[][] d = null;
+        String[][] d = new String[data.size()][3];
         for(int i=0;i<data.size();i++){
             String[] w = data.get(i).ToArray();
             d[i] = w;
@@ -168,9 +168,10 @@ public class CSV {
                 ArrayList<String> line = data.get(i).ToString();
                 for(String elem:line){
                     output.print(elem);
-                    System.out.println(elem);
+                    System.out.print(elem + " ");
                     output.print(",");
                 }
+                System.out.println();
                 output.println();
             }
             output.close();
@@ -209,7 +210,7 @@ public class CSV {
     public static QandA parseLineWithPattearn(String line){
         Matcher mc = ptn.matcher(line);
         if(mc.matches()){
-            System.out.println("ok");
+            System.out.println("read ok");
             float corrRate = Float.parseFloat(mc.group(3));
             int ResNum = Integer.parseInt(mc.group(4));
             int corrNum = Integer.parseInt(mc.group(5));

@@ -45,7 +45,7 @@ public class QandA {
     }
     
     public String[] ToArray(){
-        String[] d = null;
+        String[] d = new String[3];
         d[0] = question;
         d[1] = answer;
         return d;
