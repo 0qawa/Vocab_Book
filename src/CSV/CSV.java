@@ -17,6 +17,9 @@ package CSV;
 ・Output(int 問題番号)
 　問題を取得(QandAクラスの値が帰ってくる)
 
+・OutputLast()
+　末尾の問題を取得(QandAクラスの値が帰ってくる)
+
 ・Delete(int 問題番号)
 　問題を削除
 
@@ -27,7 +30,7 @@ package CSV;
 　データ全体を取得(ArrayList<QandA>が帰ってくる)
 
 ・DataArray()
-　問題と答えだけのデータを配列として取得(String[][]が帰ってくる)
+　問題と答えと正答率だけのデータを配列として取得(String[][]が帰ってくる)
 
 ・CorrectRate(int 問題番号, float 正答率)
   正答率を入力
@@ -101,6 +104,10 @@ public class CSV {
     //問題番号によって、問題を受け取る
     public static QandA Output(int number){
         return data.get(number);
+    }
+    
+    public static QandA OutputLast(){
+        return data.get(data.size()-1);
     }
 
     public static ArrayList<QandA> getData() {
