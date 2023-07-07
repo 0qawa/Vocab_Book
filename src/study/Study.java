@@ -70,6 +70,11 @@ public class Study {
         }
         return i;
     }
+    
+    //CSVクラスを返す
+    public static CSV getCSV(){
+        return csvlist;
+    }
 
     //問題番号を返す
     public static int getID() {
