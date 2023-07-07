@@ -93,14 +93,17 @@ public class Study {
     //回答の正誤判定をし、"正解"または"不正解"の文字列を返す
     public static String judge(String answer) {
         if (answer.equals(QA.getAnswer())) {
-            n_res = QA.getNum_res() + 1;
-            n_cor = QA.getNum_correct() + 1;
+            QA.CountNum_res();
+            QA.CountNum_correct();
+            n_res = QA.getNum_res();
+            n_cor = QA.getNum_correct();
             newrate = (float) n_cor / (float) n_res;
             return "正解";
         } else {
-            n_res = QA.getNum_res() + 1;
+            QA.CountNum_res();
+            n_res = QA.getNum_res();
             n_cor = QA.getNum_correct();
-            newrate = (float) n_res / (float) n_cor;
+            newrate = (float) n_cor / (float) n_res;
             return "不正解";
         }
     }

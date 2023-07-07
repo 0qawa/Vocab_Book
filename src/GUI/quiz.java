@@ -179,7 +179,7 @@ public class quiz extends javax.swing.JFrame {
         //問題番号と正解率を受け取り、文字型に直す
         this.ID = this.std.getID();
         this.Question = this.QA.getQuestion();
-        this.rate = this.QA.getCorrectRate();
+        this.rate = this.QA.getCorrectRate() * 100;
         String st_ID =  this.ID.toString();
         String st_rate =  String.valueOf(this.rate);
         //表示

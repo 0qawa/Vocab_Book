@@ -131,7 +131,7 @@ public class menu extends javax.swing.JFrame {
         //問題番号と正解率を受け取り、文字型に直す
         this.ID = std.getID();
         this.question = QA.getQuestion();
-        this.rate = QA.getCorrectRate();
+        this.rate = QA.getCorrectRate() * 100;
         String st_ID =  ID.toString();
         String st_rate =  String.valueOf(rate);
         //Studyクラスのオブジェクトを共有
