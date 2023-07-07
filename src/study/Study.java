@@ -46,7 +46,7 @@ public class Study {
         ratelist.clear();
         totalrate = 0;
         for (QandA qalist : list) {
-            float rate = qalist.getCorrectRate() + 1;
+            float rate = (float)1.01 - qalist.getCorrectRate();
             ratelist.add(rate);
             totalrate += rate;
         }
