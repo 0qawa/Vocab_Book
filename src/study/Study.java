@@ -25,7 +25,7 @@ public class Study {
     private static QandA QA; //出題する問題(QandAクラス)
     private static int n_res, n_cor; //問題の回答回数、正答回数
     private static float newrate; //問題回答後の新しい正解率
-    private static ArrayList<Float> ratelist; //問題の出題に使用する確率のリスト
+    private static ArrayList<Float> ratelist = new ArrayList<>();; //問題の出題に使用する確率のリスト
     private static float totalrate; //問題の出題に使用するパラメータ
 
     public Study(CSV csv) {

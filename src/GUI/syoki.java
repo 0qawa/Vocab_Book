@@ -137,8 +137,7 @@ public class syoki extends javax.swing.JFrame {
         
     }
     
-    public static CSV csv;
-
+    public static CSV csv =new CSV();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Continue;
     private javax.swing.JButton New;

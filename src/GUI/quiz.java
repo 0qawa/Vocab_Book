@@ -172,15 +172,15 @@ public class quiz extends javax.swing.JFrame {
         
         
         //問題と答えをセットする
-        this.QA = std.setQA();
+        this.QA = this.std.setQA();
         
         
         //問題と正答率を更新
         //問題番号と正解率を受け取り、文字型に直す
-        this.ID = std.getID();
-        this.Question = QA.getQuestion();
-        this.rate = QA.getCorrectRate();
-        String st_ID =  ID.toString();
+        this.ID = this.std.getID();
+        this.Question = this.QA.getQuestion();
+        this.rate = this.QA.getCorrectRate();
+        String st_ID =  this.ID.toString();
         String st_rate =  String.valueOf(this.rate);
         //表示
         quiz.question.setText(this.Question);
