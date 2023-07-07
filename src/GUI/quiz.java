@@ -170,7 +170,6 @@ public class quiz extends javax.swing.JFrame {
         
         
         
-        
         //問題と答えをセットする
         this.QA = this.std.setQA();
         

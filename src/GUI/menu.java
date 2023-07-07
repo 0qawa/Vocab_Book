@@ -123,7 +123,7 @@ public class menu extends javax.swing.JFrame {
         quiz.per.setText("１");
         */
         
-        //問題リストを受け取
+        //問題リストを受け取る
         this.QA = std.setQA();
         
         
