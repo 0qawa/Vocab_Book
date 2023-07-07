@@ -50,6 +50,7 @@ public class Study {
             ratelist.add(rate);
             totalrate += rate;
         }
+        //System.out.println(ratelist);
     }
 
     //出題する問題のIDを選択する
@@ -94,7 +95,7 @@ public class Study {
         if (answer.equals(QA.getAnswer())) {
             n_res = QA.getNum_res() + 1;
             n_cor = QA.getNum_correct() + 1;
-            newrate = (float) n_res / (float) n_cor;
+            newrate = (float) n_cor / (float) n_res;
             return "正解";
         } else {
             n_res = QA.getNum_res() + 1;
