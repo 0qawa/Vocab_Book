@@ -50,6 +50,7 @@ public class Study {
             ratelist.add(rate);
             totalrate += rate;
         }
+        //System.out.println(ratelist);
     }
 
     //出題する問題のIDを選択する
@@ -71,14 +72,11 @@ public class Study {
         return i;
     }
     
+    //CSVクラスをセット
     public static void setCSV(CSV csv){
         csvlist = csv;
     }
     
-    //CSVクラスを返す
-    public static CSV getCSV(){
-        return csvlist;
-    }
 
     //問題番号を返す
     public static int getID() {
@@ -90,13 +88,14 @@ public class Study {
     public static float getnewrate() {
         return newrate;
     }
+    
 
     //回答の正誤判定をし、"正解"または"不正解"の文字列を返す
     public static String judge(String answer) {
         if (answer.equals(QA.getAnswer())) {
             n_res = QA.getNum_res() + 1;
             n_cor = QA.getNum_correct() + 1;
-            newrate = (float) n_res / (float) n_cor;
+            newrate = (float) n_cor / (float) n_res;
             return "正解";
         } else {
             n_res = QA.getNum_res() + 1;
