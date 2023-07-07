@@ -4,6 +4,9 @@
  */
 package GUI;
 
+
+import CSV.CSV;
+import book.QandA;
 import javax.swing.JOptionPane;
 import study.Study;
 
@@ -159,21 +162,32 @@ public class quiz extends javax.swing.JFrame {
         //入力された解答を受け取る
         String Ans = this.answer.getText();
         //正誤判定した結果を受け取る
-        String Res = Study.judge(Ans);
+        String Res = std.judge(Ans);
         JOptionPane.showMessageDialog(this,Res,"結果", JOptionPane.INFORMATION_MESSAGE);
+        //正解率を更新
+        csv.CorrectRate(std.getID(),std.getnewrate());
+        std.setCSV(csv);
         
         
-                /*
-        //quizタブの最初の問題番号と正答率を表示
+        
+        
+        //問題と答えをセットする
+        this.QA = std.setQA();
+        
+        
+        //問題と正答率を更新
         //問題番号と正解率を受け取り、文字型に直す
-        this.ID = Study.getID();
-        this.rate = Study.getnewrate();
+        this.ID = std.getID();
+        this.Question = QA.getQuestion();
+        this.rate = QA.getCorrectRate();
         String st_ID =  ID.toString();
-        String st_rate =  String.valueOf(rate);
+        String st_rate =  String.valueOf(this.rate);
         //表示
+        quiz.question.setText(this.Question);
         quiz.num.setText(st_ID);
         quiz.per.setText(st_rate);
-        */
+        
+
     }//GEN-LAST:event_kaitouActionPerformed
 
     /**
@@ -212,10 +226,19 @@ public class quiz extends javax.swing.JFrame {
         
     }
     
-    public static Integer ID;
-    public static float rate;
+    
+    
     
 
+        
+    
+    public static Integer ID;
+    public static float rate;
+    public static String Question;
+    
+    public static QandA QA;
+    public static Study std;
+    public static CSV csv;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextField answer;
     private javax.swing.JLabel jLabel1;
