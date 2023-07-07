@@ -161,6 +161,19 @@ public class quiz extends javax.swing.JFrame {
         //正誤判定した結果を受け取る
         String Res = Study.judge(Ans);
         JOptionPane.showMessageDialog(this,Res,"結果", JOptionPane.INFORMATION_MESSAGE);
+        
+        
+                /*
+        //quizタブの最初の問題番号と正答率を表示
+        //問題番号と正解率を受け取り、文字型に直す
+        this.ID = Study.getID();
+        this.rate = Study.getnewrate();
+        String st_ID =  ID.toString();
+        String st_rate =  String.valueOf(rate);
+        //表示
+        quiz.num.setText(st_ID);
+        quiz.per.setText(st_rate);
+        */
     }//GEN-LAST:event_kaitouActionPerformed
 
     /**
@@ -198,6 +211,10 @@ public class quiz extends javax.swing.JFrame {
         });
         
     }
+    
+    public static Integer ID;
+    public static float rate;
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextField answer;

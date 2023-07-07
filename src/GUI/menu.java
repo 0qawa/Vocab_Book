@@ -4,6 +4,8 @@
  */
 package GUI;
 
+import study.Study;
+
 /**
  *
  * @author Toui Kodera
@@ -111,12 +113,25 @@ public class menu extends javax.swing.JFrame {
         qz.show();
         dispose();
         
-        //quizタブの問題を表示
+        //quizタブの問題を表示（仮）
         quiz.question.setText("問題");
-        //quizタブの最初の問題番号と正答率を表示
+        
+        //quizタブの最初の問題番号と正答率を表示(仮)
         quiz.num.setText("１");
         quiz.per.setText("１");
         
+        
+        /*
+        //quizタブの最初の問題番号と正答率を表示
+        //問題番号と正解率を受け取り、文字型に直す
+        this.ID = Study.getID();
+        this.rate = Study.getnewrate();
+        String st_ID =  ID.toString();
+        String st_rate =  String.valueOf(rate);
+        //表示
+        quiz.num.setText(st_ID);
+        quiz.per.setText(st_rate);
+        */
     }//GEN-LAST:event_gakusyuActionPerformed
 
     /**
@@ -154,6 +169,9 @@ public class menu extends javax.swing.JFrame {
         });
         
     }
+    
+    public static Integer ID;
+    public static float rate;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton gakusyu;
