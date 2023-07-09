@@ -30,12 +30,14 @@ public class menu extends javax.swing.JFrame {
     private void initComponents() {
 
         nyuryoku = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        kanri = new javax.swing.JButton();
         gakusyu = new javax.swing.JButton();
         modoru = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(0, 45, 0, 0));
 
         nyuryoku.setText("データ入力");
         nyuryoku.addActionListener(new java.awt.event.ActionListener() {
@@ -44,7 +46,12 @@ public class menu extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("閲覧管理");
+        kanri.setText("閲覧管理");
+        kanri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kanriActionPerformed(evt);
+            }
+        });
 
         gakusyu.setText("学習スタート");
         gakusyu.addActionListener(new java.awt.event.ActionListener() {
@@ -61,7 +68,9 @@ public class menu extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("BiauKaiTC", 0, 48)); // NOI18N
-        jLabel1.setText("Vocab_book");
+        jLabel1.setText("Vocab_Book");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/hiro-macbook/Downloads/gettyimages-1321495582-612x612.jpg")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -71,31 +80,37 @@ public class menu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addComponent(modoru)
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nyuryoku, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(gakusyu, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)))
+                        .addComponent(modoru))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
+                        .addGap(97, 97, 97)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(kanri, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nyuryoku, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(gakusyu, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
                         .addComponent(jLabel1)))
-                .addContainerGap(553, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(115, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(64, 64, 64)
+                .addGap(59, 59, 59)
                 .addComponent(nyuryoku, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(kanri, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(gakusyu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66)
                 .addComponent(modoru)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jLabel2)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
@@ -155,6 +170,14 @@ public class menu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_gakusyuActionPerformed
 
+    private void kanriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kanriActionPerformed
+        // TODO add your handling code here:
+        //閲覧管理画面への切り替え
+        view vw = new view();
+        vw.show();
+        dispose();
+    }//GEN-LAST:event_kanriActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -202,8 +225,9 @@ public class menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton gakusyu;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton kanri;
     private javax.swing.JButton modoru;
     private javax.swing.JButton nyuryoku;
     // End of variables declaration//GEN-END:variables
