@@ -66,7 +66,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="Continue">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x7d9a;&#x304d;"/>
+        <Property name="text" type="java.lang.String" value="&#x7d9a;&#x304d;&#x304b;&#x3089;"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ContinueActionPerformed"/>

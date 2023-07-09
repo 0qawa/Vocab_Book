@@ -41,7 +41,7 @@ public class syoki extends javax.swing.JFrame {
             }
         });
 
-        Continue.setText("続き");
+        Continue.setText("続きから");
         Continue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ContinueActionPerformed(evt);
