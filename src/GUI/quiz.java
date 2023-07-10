@@ -176,7 +176,7 @@ public class quiz extends javax.swing.JFrame {
         result.sum_num.setText("１");
         result.cor_num.setText("１");
         
-        
+        dispose();
     }//GEN-LAST:event_modoruActionPerformed
 
     private void kaitouActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kaitouActionPerformed
