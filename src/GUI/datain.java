@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import CSV.CSV;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,11 +13,13 @@ import javax.swing.JOptionPane;
  */
 public class datain extends javax.swing.JFrame {
 
+    public static CSV csv = null;
     /**
      * Creates new form datain
      */
-    public datain() {
+    public datain(CSV csv) {
         initComponents();
+        this.csv = csv;
     }
 
     /**
@@ -142,7 +145,7 @@ public class datain extends javax.swing.JFrame {
     private void modoruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoruActionPerformed
         // TODO add your handling code here:
         //メニュー画面へ切り替え
-        menu mn = new menu();
+        menu mn = new menu(csv);
         mn.show();
         dispose();
 
@@ -186,7 +189,7 @@ public class datain extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new datain().setVisible(true);
+                new datain(csv).setVisible(true);
             }
         });
     }

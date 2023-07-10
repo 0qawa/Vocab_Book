@@ -4,17 +4,21 @@
  */
 package GUI;
 
+import CSV.CSV;
+
 /**
  *
  * @author Toui Kodera
  */
 public class result extends javax.swing.JFrame {
 
+    public static CSV csv = null;
     /**
      * Creates new form result
      */
-    public result() {
+    public result(CSV csv) {
         initComponents();
+        this.csv = csv;
     }
 
     /**
@@ -100,7 +104,7 @@ public class result extends javax.swing.JFrame {
     private void OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKActionPerformed
         // TODO add your handling code here:
         //メニュー画面へ切り替え
-        menu mn = new menu();
+        menu mn = new menu(csv);
         mn.show();
         dispose();
     }//GEN-LAST:event_OKActionPerformed
@@ -135,7 +139,7 @@ public class result extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new result().setVisible(true);
+                new result(null).setVisible(true);
             }
         });
     }

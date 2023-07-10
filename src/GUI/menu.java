@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import CSV.CSV;
 import book.QandA;
 import study.Study;
 
@@ -13,11 +14,14 @@ import study.Study;
  */
 public class menu extends javax.swing.JFrame {
 
+    public static CSV csv = null;
     /**
      * Creates new form menu
      */
-    public menu() {
+    public menu(CSV csv) {
         initComponents();
+        this.csv = csv;
+        this.std = new Study(csv);
     }
 
     /**
@@ -68,9 +72,7 @@ public class menu extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("BiauKaiTC", 0, 48)); // NOI18N
-        jLabel1.setText("Vocab_Book");
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/hiro-macbook/Downloads/gettyimages-1321495582-612x612.jpg")); // NOI18N
+        jLabel1.setText("デジタル単語帳");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,9 +90,9 @@ public class menu extends javax.swing.JFrame {
                             .addComponent(nyuryoku, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(gakusyu, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
+                        .addContainerGap()
                         .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -110,7 +112,7 @@ public class menu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(jLabel2)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -120,7 +122,7 @@ public class menu extends javax.swing.JFrame {
     private void nyuryokuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nyuryokuActionPerformed
         // TODO add your handling code here:
         //データ入力画面へ切り替え
-        datain di = new datain();
+        datain di = new datain(csv);
         di.show();
         dispose();
     }//GEN-LAST:event_nyuryokuActionPerformed
@@ -137,7 +139,7 @@ public class menu extends javax.swing.JFrame {
     private void gakusyuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gakusyuActionPerformed
         // TODO add your handling code here:
         //学習画面へ切り替え
-        quiz qz  = new quiz();
+        quiz qz  = new quiz(csv);
         qz.show();
         dispose();
         
@@ -174,7 +176,7 @@ public class menu extends javax.swing.JFrame {
     private void kanriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kanriActionPerformed
         // TODO add your handling code here:
         //閲覧管理画面への切り替え
-        view vw = new view();
+        view vw = new view(csv);
         vw.show();
         dispose();
     }//GEN-LAST:event_kanriActionPerformed
@@ -209,7 +211,7 @@ public class menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new menu().setVisible(true);
+                new menu(null).setVisible(true);
             }
         });
         
@@ -218,7 +220,7 @@ public class menu extends javax.swing.JFrame {
     public static Integer ID;
     public static String question;
     public static float rate;
-    public static Study std = new Study(syoki.csv);
+    public static Study std = null;
     public static QandA QA;
     
     
