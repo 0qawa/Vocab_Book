@@ -94,13 +94,13 @@ public class syoki extends javax.swing.JFrame {
     private void NewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewActionPerformed
         // TODO add your handling code here:
         //新規ファイル名入力画面へ切り替え
-        //filename fn = new filename();
-        //fn.show();
-        //dispose();
-        //メニュー画面へ切り替え
-        menu mn = new menu();
-        mn.show();
+        filename fn = new filename();
+        fn.show();
         dispose();
+        //メニュー画面へ切り替え
+        //menu mn = new menu();
+        //mn.show();
+        //dispose();
         
     }//GEN-LAST:event_NewActionPerformed
 
