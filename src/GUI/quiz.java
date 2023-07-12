@@ -173,9 +173,14 @@ public class quiz extends javax.swing.JFrame {
         rs.setVisible(true);
         
         //総問題数と正解数を表示
-        result.sum_num.setText("１");
-        result.cor_num.setText("１");
+        //総問題数と正解数を文字型に変更
+        String st_n_cor =  this.n_cor.toString();
+        String st_n_res =  this.n_res.toString();
+        result.sum_num.setText(st_n_res);
+        result.cor_num.setText(st_n_cor);
         
+        n_cor=0;
+        n_res=0;
         dispose();
     }//GEN-LAST:event_modoruActionPerformed
 
@@ -186,6 +191,13 @@ public class quiz extends javax.swing.JFrame {
         //正誤判定した結果を受け取る
         String Res = std.judge(Ans);
         JOptionPane.showMessageDialog(this,Res,"結果", JOptionPane.INFORMATION_MESSAGE);
+        
+        //このセクションに置ける問題数と正解数を計算
+        this.n_res++;
+        if(Res.equals("正解")){
+            this.n_cor++;
+        }
+        
         //正解率を更新
         csv.CorrectRate(std.getID(),std.getnewrate());
         std.setCSV(csv);
@@ -264,6 +276,12 @@ public class quiz extends javax.swing.JFrame {
     public static QandA QA;
     public static Study std = null;
     public static CSV csv = null;
+    
+    
+    public static Integer n_cor = 0;
+    public static Integer n_res = 0;
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextField answer;
     private javax.swing.JLabel jLabel1;
