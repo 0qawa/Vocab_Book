@@ -83,6 +83,7 @@ public class view extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane2.setViewportView(jTable1);
         jTable1.setModel(tableModel);
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
@@ -92,16 +93,21 @@ public class view extends javax.swing.JFrame {
         TableColumn column = null;
 
         column = columnModel.getColumn(0);
-        column.setPreferredWidth(275);
+        column.setPreferredWidth(370);
         column = columnModel.getColumn(1);
-        column.setPreferredWidth(125);
+        column.setPreferredWidth(130);
         column = columnModel.getColumn(2);
-        column.setPreferredWidth(43);
+        column.setPreferredWidth(91);
 
         DefaultTableCellRenderer tableCellRenderer = new DefaultTableCellRenderer();
         tableCellRenderer.setHorizontalAlignment(javax.swing.JLabel.CENTER);
-        TableColumn col = jTable1.getColumnModel().getColumn(2);
+        TableColumn col = jTable1.getColumnModel().getColumn(1);
         col.setCellRenderer(tableCellRenderer);
+
+        DefaultTableCellRenderer tableCellRenderer1 = new DefaultTableCellRenderer();
+        tableCellRenderer1.setHorizontalAlignment(javax.swing.JLabel.CENTER);
+        TableColumn col1 = jTable1.getColumnModel().getColumn(2);
+        col1.setCellRenderer(tableCellRenderer);
 
         enter.setText("入力");
         enter.addActionListener(new java.awt.event.ActionListener() {
@@ -182,15 +188,15 @@ public class view extends javax.swing.JFrame {
                         .addComponent(modoru))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(135, 135, 135)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(174, Short.MAX_VALUE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()

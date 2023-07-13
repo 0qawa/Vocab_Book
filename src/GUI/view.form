@@ -63,10 +63,10 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" min="-2" pref="591" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="600" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="174" max="32767" attributes="0"/>
+              <EmptySpace pref="165" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -74,8 +74,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-              <Component id="jScrollPane2" min="-2" pref="262" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <Component id="jScrollPane2" min="-2" pref="263" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" min="-2" pref="47" max="-2" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
@@ -131,10 +131,13 @@
                 <Column editable="true" title="Title 4" type="java.lang.Object"/>
               </Table>
             </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="&#x30c7;&#x30d5;&#x30a9;&#x30eb;&#x30c8;&#x306e;&#x30ab;&#x30fc;&#x30bd;&#x30eb;"/>
+            </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable(tableModel);"/>
-            <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="jTable1.setModel(tableModel);&#xd;&#xa;jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);&#xd;&#xa;&#xd;&#xa;DefaultTableColumnModel columnModel = (DefaultTableColumnModel)jTable1.getColumnModel();&#xd;&#xa;&#xd;&#xa;TableColumn column = null;&#xd;&#xa;&#xd;&#xa;column = columnModel.getColumn(0);&#xd;&#xa;column.setPreferredWidth(275);&#xd;&#xa;column = columnModel.getColumn(1);&#xd;&#xa;column.setPreferredWidth(125);&#xd;&#xa;column = columnModel.getColumn(2);&#xd;&#xa;column.setPreferredWidth(43);&#xd;&#xa;&#xd;&#xa;DefaultTableCellRenderer tableCellRenderer = new DefaultTableCellRenderer();&#xd;&#xa;tableCellRenderer.setHorizontalAlignment(javax.swing.JLabel.CENTER);&#xd;&#xa;TableColumn col = jTable1.getColumnModel().getColumn(2);&#xd;&#xa;col.setCellRenderer(tableCellRenderer);"/>
+            <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="jTable1.setModel(tableModel);&#xd;&#xa;jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);&#xd;&#xa;&#xd;&#xa;DefaultTableColumnModel columnModel = (DefaultTableColumnModel)jTable1.getColumnModel();&#xd;&#xa;&#xd;&#xa;TableColumn column = null;&#xd;&#xa;&#xd;&#xa;column = columnModel.getColumn(0);&#xd;&#xa;column.setPreferredWidth(370);&#xd;&#xa;column = columnModel.getColumn(1);&#xd;&#xa;column.setPreferredWidth(130);&#xd;&#xa;column = columnModel.getColumn(2);&#xd;&#xa;column.setPreferredWidth(91);&#xd;&#xa;&#xd;&#xa;DefaultTableCellRenderer tableCellRenderer = new DefaultTableCellRenderer();&#xd;&#xa;tableCellRenderer.setHorizontalAlignment(javax.swing.JLabel.CENTER);&#xd;&#xa;TableColumn col = jTable1.getColumnModel().getColumn(1);&#xd;&#xa;col.setCellRenderer(tableCellRenderer);&#xd;&#xa;&#xd;&#xa;DefaultTableCellRenderer tableCellRenderer1 = new DefaultTableCellRenderer();&#xd;&#xa;tableCellRenderer1.setHorizontalAlignment(javax.swing.JLabel.CENTER);&#xd;&#xa;TableColumn col1 = jTable1.getColumnModel().getColumn(2);&#xd;&#xa;col1.setCellRenderer(tableCellRenderer);"/>
           </AuxValues>
         </Component>
       </SubComponents>

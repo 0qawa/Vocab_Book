@@ -48,6 +48,7 @@ public class QandA {
         String[] d = new String[3];
         d[0] = question;
         d[1] = answer;
+        d[2] = correctRate.toString();
         return d;
     }
 
