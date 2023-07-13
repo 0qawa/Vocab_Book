@@ -101,6 +101,12 @@ public class CSV {
         data.add(QArate);
     }
     
+    //問題と答えと正答率を受け取って、データベースにセット
+    public static void Input(String question, String answer, Float correct){
+        QandA QArate = new QandA(question, answer, correct);
+        data.add(QArate);
+    }
+    
     //問題番号によって、問題を受け取る
     public static QandA Output(int number){
         return data.get(number);

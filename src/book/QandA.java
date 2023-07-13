@@ -23,6 +23,14 @@ public class QandA {
         num_res = 0;
         num_correct = 0;
     }
+    
+    public QandA(String q, String a, Float r){
+        question = q;
+        answer = a;
+        correctRate = r;
+        num_res = 0;
+        num_correct = 0;
+    }
 
     public String getQuestion() {
         return question;
