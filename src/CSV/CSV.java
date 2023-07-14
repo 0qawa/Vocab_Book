@@ -145,8 +145,8 @@ public class CSV {
     }
     
     //CSVに保存する
-    public static void MakeCSV(){
-        String filename = "data.csv";
+    public static void MakeCSV(String name){
+        String filename = name;
         dataFile = new File(dataDir.getPath() + File.separator + filename);
         try{
             CSV.setOutputFile(dataFile);
@@ -196,9 +196,9 @@ public class CSV {
     }
     
     //CSVから読み込む
-    public static void ReadCSV(){
+    public static void ReadCSV(String name){
         String line;
-        String filename = "data.csv";
+        String filename = name;
         dataFile = new File(dataDir.getPath() + File.separator + filename);
         try{
             reader = new BufferedReader(new InputStreamReader(new FileInputStream(dataFile),"Shift-JIS"));
