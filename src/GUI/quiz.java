@@ -265,11 +265,7 @@ public class quiz extends javax.swing.JFrame {
     }
     
     
-    
-    
 
-        
-    
     public static Integer ID;
     public static float rate;
     public static String Question;
