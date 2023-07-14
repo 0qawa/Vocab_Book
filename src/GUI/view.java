@@ -31,11 +31,13 @@ public class view extends javax.swing.JFrame{
      */
     static DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
     static CSV csv = null;
+    static String name = null;
     
-    public view(CSV csv) {
+    public view(CSV csv, String filename) {
         initComponents();
         this.csv = csv;
         String[][] tabledata = this.csv.DataArray();
+        this.name = filename;
 
         for(int i = 0 ; i < tabledata.length ; i++){
             tableModel.addRow(tabledata[i]);
@@ -289,18 +291,7 @@ public class view extends javax.swing.JFrame{
     //保存ボタンを押したとき
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
-        /*
-        String q = null, a = null;
-        float r = 0;
-        csv.AllClear();
-        for(int i = 0;i<tableModel.getRowCount();i++){
-            q = tableModel.getValueAt(i, 0).toString();
-            a = tableModel.getValueAt(i, 1).toString();
-            r = Float.parseFloat(tableModel.getValueAt(i, 0).toString());
-            csv.Input(q,a,r);
-        }
-        */
-        csv.MakeCSV();
+        csv.MakeCSV(name);
         SysMes.setText("保存しました");
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
@@ -308,7 +299,7 @@ public class view extends javax.swing.JFrame{
     private void modoruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoruActionPerformed
         // TODO add your handling code here:
         //メニュー画面に戻る
-        menu mn = new menu(csv);
+        menu mn = new menu(csv, name);
         mn.show();
         tableModel = new DefaultTableModel(columnNames, 0);
         dispose();
@@ -365,7 +356,7 @@ public class view extends javax.swing.JFrame{
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new view(null).setVisible(true);
+                new view(null, null).setVisible(true);
             }
         });
     }

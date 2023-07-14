@@ -15,13 +15,15 @@ import study.Study;
 public class menu extends javax.swing.JFrame {
 
     public static CSV csv = null;
+    public static String name = null; 
     /**
      * Creates new form menu
      */
-    public menu(CSV csv) {
+    public menu(CSV csv, String filename) {
         initComponents();
         this.csv = csv;
         this.std = new Study(csv);
+        this.name = filename;
     }
 
     /**
@@ -126,7 +128,7 @@ public class menu extends javax.swing.JFrame {
     private void gakusyuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gakusyuActionPerformed
         // TODO add your handling code here:
         //学習画面へ切り替え
-        quiz qz  = new quiz(csv);
+        quiz qz  = new quiz(csv, name);
         qz.show();
         dispose();
         
@@ -164,7 +166,7 @@ public class menu extends javax.swing.JFrame {
     private void kanriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kanriActionPerformed
         // TODO add your handling code here:
         //閲覧管理画面への切り替え
-        view vw = new view(csv);
+        view vw = new view(csv, name);
         vw.show();
         dispose();
     }//GEN-LAST:event_kanriActionPerformed
@@ -199,7 +201,7 @@ public class menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new menu(null).setVisible(true);
+                new menu(null, null).setVisible(true);
             }
         });
         

@@ -121,8 +121,11 @@ public class filechoice extends javax.swing.JFrame {
 
     private void tourokuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tourokuActionPerformed
         // TODO add your handling code here:
-        filename fn = new filename();
-        fn.show();
+        String filename = this.name.getText();
+        csv = new CSV();
+        csv.ReadCSV(filename);
+        menu mn = new menu(csv, filename);
+        mn.show();
         dispose();
     }//GEN-LAST:event_tourokuActionPerformed
 

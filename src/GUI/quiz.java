@@ -19,10 +19,11 @@ public class quiz extends javax.swing.JFrame {
     /**
      * Creates new form quiz
      */
-    public quiz(CSV csv) {
+    public quiz(CSV csv, String filename) {
         initComponents();
         this.csv = csv;
         this.std = new Study(csv); 
+        this.name = filename;
     }
 
     /**
@@ -167,7 +168,7 @@ public class quiz extends javax.swing.JFrame {
     private void modoruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoruActionPerformed
         // TODO add your handling code here:
         //結果画面へ切り替え
-        result rs = new result(csv);
+        result rs = new result(csv, name);
         rs.setVisible(true);
         
         //このセクションにおける総問題数と正解数を表示
@@ -258,7 +259,7 @@ public class quiz extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new quiz(null).setVisible(true);
+                new quiz(null, null).setVisible(true);
             }
         });
         
@@ -273,6 +274,7 @@ public class quiz extends javax.swing.JFrame {
     public static QandA QA;
     public static Study std = null;
     public static CSV csv = null;
+    public static String name = null;
     
     
     public static Integer n_cor = 0;
