@@ -13,12 +13,14 @@ import CSV.CSV;
 public class result extends javax.swing.JFrame {
 
     public static CSV csv = null;
+    public static String name = null;
     /**
      * Creates new form result
      */
-    public result(CSV csv) {
+    public result(CSV csv, String filename) {
         initComponents();
         this.csv = csv;
+        this.name = filename;
     }
 
     /**
@@ -104,7 +106,7 @@ public class result extends javax.swing.JFrame {
     private void OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKActionPerformed
         // TODO add your handling code here:
         //メニュー画面へ切り替え
-        menu mn = new menu(csv);
+        menu mn = new menu(csv, name);
         mn.show();
         dispose();
     }//GEN-LAST:event_OKActionPerformed
@@ -139,7 +141,7 @@ public class result extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new result(null).setVisible(true);
+                new result(null, null).setVisible(true);
             }
         });
     }

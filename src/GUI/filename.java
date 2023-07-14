@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import CSV.CSV;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,6 +16,8 @@ public class filename extends javax.swing.JFrame {
     /**
      * Creates new form filename
      */
+    public static CSV csv = null;
+
     public filename() {
         initComponents();
     }
@@ -112,7 +115,14 @@ public class filename extends javax.swing.JFrame {
     private void tourokuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tourokuActionPerformed
         // TODO add your handling code here:
         //登録完了画面へ切り替え
-        JOptionPane.showMessageDialog(this,"登録完了","結果", JOptionPane.INFORMATION_MESSAGE);
+        String filename = this.name.getText();
+        csv = new CSV();
+        csv.MakeCSV(filename);
+        csv.ReadCSV(filename);
+        JOptionPane.showMessageDialog(this, "登録完了", "結果", JOptionPane.INFORMATION_MESSAGE);
+        menu mn = new menu(csv, filename);
+        mn.show();
+        dispose();
     }//GEN-LAST:event_tourokuActionPerformed
 
     /**
