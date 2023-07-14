@@ -33,7 +33,6 @@ public class menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        nyuryoku = new javax.swing.JButton();
         kanri = new javax.swing.JButton();
         gakusyu = new javax.swing.JButton();
         modoru = new javax.swing.JButton();
@@ -43,13 +42,6 @@ public class menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 45, 0, 0));
-
-        nyuryoku.setText("データ入力");
-        nyuryoku.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nyuryokuActionPerformed(evt);
-            }
-        });
 
         kanri.setText("閲覧管理");
         kanri.addActionListener(new java.awt.event.ActionListener() {
@@ -82,16 +74,17 @@ public class menu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(modoru)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
+                        .addGap(17, 17, 17)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(modoru)
+                            .addComponent(jLabel1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(kanri, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nyuryoku, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(gakusyu, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel1))
+                            .addComponent(gakusyu, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -102,13 +95,11 @@ public class menu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(59, 59, 59)
-                .addComponent(nyuryoku, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(70, 70, 70)
                 .addComponent(kanri, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(59, 59, 59)
                 .addComponent(gakusyu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
+                .addGap(95, 95, 95)
                 .addComponent(modoru)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -122,14 +113,6 @@ public class menu extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void nyuryokuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nyuryokuActionPerformed
-        // TODO add your handling code here:
-        //データ入力画面へ切り替え
-        datain di = new datain(csv);
-        di.show();
-        dispose();
-    }//GEN-LAST:event_nyuryokuActionPerformed
 
     private void modoruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoruActionPerformed
         // TODO add your handling code here:
@@ -162,7 +145,8 @@ public class menu extends javax.swing.JFrame {
         
         //quizタブの最初の問題番号と正答率を表示
         //問題番号と正解率を受け取り、文字型に直す
-        this.ID = std.getID();
+        //this.ID = std.getID();
+        this.ID=1;
         this.question = QA.getQuestion();
         this.rate = QA.getCorrectRate() * 100;
         String st_ID =  ID.toString();
@@ -237,6 +221,5 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JButton kanri;
     private javax.swing.JButton modoru;
-    private javax.swing.JButton nyuryoku;
     // End of variables declaration//GEN-END:variables
 }
