@@ -170,13 +170,14 @@ public class quiz extends javax.swing.JFrame {
         result rs = new result(csv);
         rs.setVisible(true);
         
-        //総問題数と正解数を表示
+        //このセクションにおける総問題数と正解数を表示
         //総問題数と正解数を文字型に変更
         String st_n_cor =  this.n_cor.toString();
         String st_n_res =  this.n_res.toString();
         result.sum_num.setText(st_n_res);
         result.cor_num.setText(st_n_cor);
         
+        //このセクションにおける総問題数と正解数をリセット
         n_cor=0;
         n_res=0;
         dispose();
@@ -215,7 +216,7 @@ public class quiz extends javax.swing.JFrame {
         this.rate = this.QA.getCorrectRate() * 100;
         String st_ID =  this.ID.toString();
         String st_rate =  String.valueOf(this.rate);
-        //表示
+        //問題番号と正解率を表示
         quiz.question.setText(this.Question);
         quiz.num.setText(st_ID);
         quiz.per.setText(st_rate);

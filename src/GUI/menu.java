@@ -162,7 +162,8 @@ public class menu extends javax.swing.JFrame {
         
         //quizタブの最初の問題番号と正答率を表示
         //問題番号と正解率を受け取り、文字型に直す
-        this.ID = std.getID();
+        //this.ID = std.getID();
+        this.ID=1;
         this.question = QA.getQuestion();
         this.rate = QA.getCorrectRate() * 100;
         String st_ID =  ID.toString();
