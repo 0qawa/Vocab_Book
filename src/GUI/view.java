@@ -290,7 +290,18 @@ public class view extends javax.swing.JFrame{
 
     //保存ボタンを押したとき
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:        
+        /*
+        String q = null, a = null;
+        float r = 0;
+        csv.AllClear();
+        for(int i = 0;i<tableModel.getRowCount();i++){
+            q = tableModel.getValueAt(i, 0).toString();
+            a = tableModel.getValueAt(i, 1).toString();
+            r = Float.parseFloat(tableModel.getValueAt(i, 0).toString());
+            csv.Input(q,a,r);
+        }
+        */
         csv.MakeCSV(name);
         SysMes.setText("保存しました");
     }//GEN-LAST:event_jToggleButton1ActionPerformed
