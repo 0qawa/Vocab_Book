@@ -271,6 +271,8 @@ public class view extends javax.swing.JFrame{
         csv.Input(Qtext.getText(),Atext.getText());
         add(csv.OutputLast());
         SysMes.setText(" ");
+        Qtext.setText("");
+        Atext.setText("");
     }//GEN-LAST:event_enterActionPerformed
 
     private void AtextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtextActionPerformed
@@ -303,7 +305,8 @@ public class view extends javax.swing.JFrame{
         }
         */
         csv.MakeCSV(name);
-        SysMes.setText("保存しました");
+        //SysMes.setText("保存しました");
+        JOptionPane.showMessageDialog(this,"保存しました","", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     //戻るボタンを押したとき
