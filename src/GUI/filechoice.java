@@ -53,7 +53,7 @@ public class filechoice extends javax.swing.JFrame {
             }
         });
 
-        touroku.setText("登録");
+        touroku.setText("選択");
         touroku.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tourokuActionPerformed(evt);

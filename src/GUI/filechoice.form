@@ -107,7 +107,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="touroku">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x767b;&#x9332;"/>
+        <Property name="text" type="java.lang.String" value="&#x9078;&#x629e;"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tourokuActionPerformed"/>
