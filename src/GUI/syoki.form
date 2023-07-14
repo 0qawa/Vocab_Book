@@ -37,12 +37,8 @@
                       </Group>
                   </Group>
                   <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" pref="360" max="-2" attributes="0"/>
-                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
               <Component id="jLabel4" min="-2" pref="571" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
@@ -64,9 +60,7 @@
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                       <Component id="New" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       <Component id="Continue" min="-2" pref="43" max="-2" attributes="0"/>
@@ -103,11 +97,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#x7684;&#x306a;&#x540d;&#x79f0;&#x3067;&#x4f55;&#x304b;&#x826f;&#x3044;&#x306e;&#x304c;&#x3042;&#x308c;&#x3070;&#x5909;&#x3048;&#x3066;&#x304f;&#x3060;&#x3055;&#x3044;"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
     </Component>
