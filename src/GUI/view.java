@@ -13,14 +13,19 @@ import book.QandA;
 import java.util.ArrayList;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Color;
+import javax.swing.event.*;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.event.TableModelEvent;
 import javax.swing.table.TableColumn;
 import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableCellRenderer;
 
-public class view extends javax.swing.JFrame {
+public class view extends javax.swing.JFrame{
 
     static String[] columnNames = {"問題", "答え", "正答率"};
+    static String[] s = {"", "", ""};
     /**
      * Creates new form gui
      */
@@ -36,16 +41,42 @@ public class view extends javax.swing.JFrame {
 
         for(int i = 0 ; i < tabledata.length ; i++){
             tableModel.addRow(tabledata[i]);
-            
         }
-
+        /*
+        String[] s = {"", "", ""};
+        tableModel.addRow(s);
+        */
     }
     
     public static void add(QandA qa){
         String[] td = qa.ToArray();
         tableModel.addRow(td);
     }
-
+    
+    /*
+    public void tableChanged(TableModelEvent e) {
+        SysMes.setText("a");
+        if (e.getType() == TableModelEvent.UPDATE) {
+            int row = e.getLastRow();
+            String q = tableModel.getValueAt(row, 0).toString();
+            String a = tableModel.getValueAt(row, 0).toString();
+            String r = tableModel.getValueAt(row, 0).toString();  //正答率の変更はできないようにする
+            if (q.equals("")){
+                if (r.equals("")){  //問題も答えも入力されていなかったら
+                    tableModel.removeRow(row+1);
+                }
+                else{  //答えのみ入力されていたら
+                    
+                }
+            }else if(r.equals("")){  //問題のみ入力されていたら
+                
+            }else{  //どちらも入力されていたら
+                tableModel.setValueAt("0.0", row, 2);
+                tableModel.addRow(s);
+            }
+        } 
+    }
+    */
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,6 +98,7 @@ public class view extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         SysMes = new javax.swing.JLabel();
         modoru = new javax.swing.JButton();
+        Hensyu = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -157,6 +189,13 @@ public class view extends javax.swing.JFrame {
                 modoruActionPerformed(evt);
             }
         });
+
+        Hensyu.setText("編集");
+        Hensyu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HensyuActionPerformed(evt);
+            }
+        });
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -165,32 +204,33 @@ public class view extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(280, 280, 280)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(SysMes, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 0, Short.MAX_VALUE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(53, 53, 53)
-                                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                                    .addComponent(enter, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(Atext))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(modoru))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(135, 135, 135)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(177, 177, 177)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(Hensyu, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(50, 50, 50)
+                                .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(53, 53, 53)
+                                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(51, 51, 51)
+                                .addComponent(enter, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Atext, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(SysMes, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(165, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -198,7 +238,7 @@ public class view extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -208,14 +248,15 @@ public class view extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(Atext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SysMes, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Delete)
                     .addComponent(jToggleButton1)
-                    .addComponent(enter))
-                .addGap(9, 9, 9)
+                    .addComponent(enter)
+                    .addComponent(Hensyu))
+                .addGap(12, 12, 12)
                 .addComponent(modoru)
                 .addContainerGap())
         );
@@ -250,7 +291,22 @@ public class view extends javax.swing.JFrame {
     //保存ボタンを押したとき
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
         csv.MakeCSV(name);
+=======
+        /*
+        String q = null, a = null;
+        float r = 0;
+        csv.AllClear();
+        for(int i = 0;i<tableModel.getRowCount();i++){
+            q = tableModel.getValueAt(i, 0).toString();
+            a = tableModel.getValueAt(i, 1).toString();
+            r = Float.parseFloat(tableModel.getValueAt(i, 0).toString());
+            csv.Input(q,a,r);
+        }
+        */
+        csv.MakeCSV();
+>>>>>>> 2b8402c5d680f05bd250fb999563d4846cb0b7bd
         SysMes.setText("保存しました");
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
@@ -263,6 +319,25 @@ public class view extends javax.swing.JFrame {
         tableModel = new DefaultTableModel(columnNames, 0);
         dispose();
     }//GEN-LAST:event_modoruActionPerformed
+
+    //編集ボタンを押したとき
+    private void HensyuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HensyuActionPerformed
+        // TODO add your handling code here:
+        int number[] = jTable1.getSelectedRows();  //選択された行のインデックス配列
+        if (number.length > 1){
+            SysMes.setText("a");
+            javax.swing.JLabel label = new javax.swing.JLabel("1つだけ選択してください");
+            label.setForeground(Color.RED);
+            JOptionPane.showMessageDialog(this, label);
+        }
+        else{
+            for(int i = 0 ; i < number.length ; i++){
+                tableModel.removeRow(number[i]-i);
+                csv.Delete(number[i]-i);
+            }
+        }    
+        SysMes.setText(" ");
+    }//GEN-LAST:event_HensyuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -304,6 +379,7 @@ public class view extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Atext;
     private javax.swing.JButton Delete;
+    private javax.swing.JButton Hensyu;
     private javax.swing.JTextArea Qtext;
     private javax.swing.JLabel SysMes;
     private javax.swing.JButton enter;

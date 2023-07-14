@@ -88,6 +88,7 @@ public class CSV {
     private static PrintWriter writer = null;
     private static BufferedReader reader = null;
     private static File dataDir;
+    private static String filename = null;
     
     public CSV(){
         this.data = new ArrayList<>();
@@ -146,13 +147,29 @@ public class CSV {
     
     //CSVに保存する
     public static void MakeCSV(String name){
-        String filename = name + ".csv";
+        filename = name + ".csv";
         dataFile = new File(dataDir.getPath() + File.separator + filename);
         try{
-            CSV.setOutputFile(dataFile);
-            CSV.outputAllData(dataFile);
+            if(data.size()>0){
+                CSV.setOutputFile(dataFile);
+                CSV.outputAllData(dataFile);
+            }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(CSV.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void MakeCSV(){
+        if(filename == null){
+            System.out.println("ERROR");
+        }else{
+            dataFile = new File(dataDir.getPath() + File.separator + filename);
+            try{
+                CSV.setOutputFile(dataFile);
+                CSV.outputAllData(dataFile);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(CSV.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     
