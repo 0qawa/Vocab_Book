@@ -124,9 +124,8 @@ public class syoki extends javax.swing.JFrame {
         //dispose();
         //メニュー画面へ
         csv = new CSV();
-        csv.ReadCSV();
-        menu mn = new menu(csv);
-        mn.show();
+        filechoice fc = new filechoice(csv);
+        fc.show();
         dispose();
         
         

@@ -8,13 +8,17 @@ package GUI;
  *
  * @author Toui Kodera
  */
+import CSV.CSV;
+
 public class filechoice extends javax.swing.JFrame {
 
+    static CSV csv = null;
     /**
      * Creates new form filechoice
      */
-    public filechoice() {
+    public filechoice(CSV csv) {
         initComponents();
+        this.csv = csv;
     }
 
     /**
@@ -162,7 +166,7 @@ public class filechoice extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new filechoice().setVisible(true);
+                new filechoice(null).setVisible(true);
             }
         });
     }
