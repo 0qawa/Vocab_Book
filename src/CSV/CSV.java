@@ -55,13 +55,11 @@ package CSV;
         //1
     }
 
-*/
-
+ */
 import book.QandA;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-
 
 import java.awt.Point;
 import java.io.BufferedReader;
@@ -83,88 +81,87 @@ import java.util.regex.Pattern;
 
 //ArrayListでHashMapを制御
 public class CSV {
+
     public static ArrayList<QandA> data;
     private static File dataFile = null;
     private static PrintWriter writer = null;
     private static BufferedReader reader = null;
     private static File dataDir;
     private static String filename = null;
-    
-    public CSV(){
+
+    public CSV() {
         this.data = new ArrayList<>();
         dataDir = new File("." + File.separator + "data");
         dataDir.mkdirs();
     }
-    
+
     //問題と答えを受け取って、データベースにセット
-    public static void Input(String question, String answer){
+    public static void Input(String question, String answer) {
         QandA QArate = new QandA(question, answer);
         data.add(QArate);
     }
-    
+
     //問題と答えと正答率を受け取って、データベースにセット
-    public static void Input(String question, String answer, Float correct){
+    public static void Input(String question, String answer, Float correct) {
         QandA QArate = new QandA(question, answer, correct);
         data.add(QArate);
     }
-    
+
     //問題番号によって、問題を受け取る
-    public static QandA Output(int number){
+    public static QandA Output(int number) {
         return data.get(number);
     }
-    
-    public static QandA OutputLast(){
-        return data.get(data.size()-1);
+
+    public static QandA OutputLast() {
+        return data.get(data.size() - 1);
     }
 
     public static ArrayList<QandA> getData() {
         return data;
     }
-    
+
     //問題番号によって、問題を削除
-    public static void Delete(int number){
+    public static void Delete(int number) {
         data.remove(number);
     }
-    
+
     //全削除
-    public static void AllClear(){
+    public static void AllClear() {
         data = new ArrayList<>();
     }
-    
+
     //問題番号によって、正答率を入力
-    public static void CorrectRate(int number, float rate){
+    public static void CorrectRate(int number, float rate) {
         data.get(number).setCorrectRate(rate);
     }
-    
-    public static String[][] DataArray(){
+
+    public static String[][] DataArray() {
         String[][] d = new String[data.size()][3];
-        for(int i=0;i<data.size();i++){
+        for (int i = 0; i < data.size(); i++) {
             String[] w = data.get(i).ToArray();
             d[i] = w;
         }
         return d;
     }
-    
+
     //CSVに保存する
-    public static void MakeCSV(String name){
+    public static void MakeCSV(String name) {
         filename = name + ".csv";
         dataFile = new File(dataDir.getPath() + File.separator + filename);
-        try{
-            if(data.size()>0){
-                CSV.setOutputFile(dataFile);
-                CSV.outputAllData(dataFile);
-            }
+        try {
+            CSV.setOutputFile(dataFile);
+            CSV.outputAllData(dataFile);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(CSV.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public static void MakeCSV(){
-        if(filename == null){
+
+    public static void MakeCSV() {
+        if (filename == null) {
             System.out.println("ERROR");
-        }else{
+        } else {
             dataFile = new File(dataDir.getPath() + File.separator + filename);
-            try{
+            try {
                 CSV.setOutputFile(dataFile);
                 CSV.outputAllData(dataFile);
             } catch (FileNotFoundException ex) {
@@ -172,31 +169,31 @@ public class CSV {
             }
         }
     }
-    
-    public static void setOutputFile(File datafile) throws FileNotFoundException{
+
+    public static void setOutputFile(File datafile) throws FileNotFoundException {
         //dataFile = datafile;
         try {
-            writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(datafile),"Shift-JIS"));
+            writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(datafile), "Shift-JIS"));
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(CSV.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public static void closeFile(){
-        if(dataFile != null){
+
+    public static void closeFile() {
+        if (dataFile != null) {
             writer.flush();
             writer.close();
             dataFile = null;
         }
     }
-    
-    public static void outputAllData(File datafile) throws FileNotFoundException{
-        try { 
-            PrintWriter output = new PrintWriter(new OutputStreamWriter(new FileOutputStream(datafile),"Shift-JIS"));
-            
-            for(int i = 0;i < data.size();i++){
+
+    public static void outputAllData(File datafile) throws FileNotFoundException {
+        try {
+            PrintWriter output = new PrintWriter(new OutputStreamWriter(new FileOutputStream(datafile), "Shift-JIS"));
+
+            for (int i = 0; i < data.size(); i++) {
                 ArrayList<String> line = data.get(i).ToString();
-                for(String elem:line){
+                for (String elem : line) {
                     output.print(elem);
                     System.out.print(elem + " ");
                     output.print(",");
@@ -211,17 +208,17 @@ public class CSV {
             Logger.getLogger(CSV.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     //CSVから読み込む
-    public static void ReadCSV(String name){
+    public static void ReadCSV(String name) {
         String line;
         String filename = name + ".csv";
         dataFile = new File(dataDir.getPath() + File.separator + filename);
-        try{
-            reader = new BufferedReader(new InputStreamReader(new FileInputStream(dataFile),"Shift-JIS"));
-            while((line = reader.readLine()) != null){
+        try {
+            reader = new BufferedReader(new InputStreamReader(new FileInputStream(dataFile), "Shift-JIS"));
+            while ((line = reader.readLine()) != null) {
                 QandA dt = CSV.parseLineWithPattearn(line);
-                if(dt!=null){
+                if (dt != null) {
                     data.add(dt);
                 }
             }
@@ -235,11 +232,12 @@ public class CSV {
             System.err.println("IOException");
         }
     }
-    
+
     private static Pattern ptn = Pattern.compile("(.*),(.*),(1?[0-9]{1,2}.[0-9]+),([0-9]+),([0-9]+),");
-    public static QandA parseLineWithPattearn(String line){
+
+    public static QandA parseLineWithPattearn(String line) {
         Matcher mc = ptn.matcher(line);
-        if(mc.matches()){
+        if (mc.matches()) {
             System.out.println("read ok");
             float corrRate = Float.parseFloat(mc.group(3));
             int ResNum = Integer.parseInt(mc.group(4));
@@ -252,5 +250,5 @@ public class CSV {
         }
         return null;
     }
-    
+
 }
