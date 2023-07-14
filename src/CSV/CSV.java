@@ -150,8 +150,8 @@ public class CSV {
         filename = name + ".csv";
         dataFile = new File(dataDir.getPath() + File.separator + filename);
         try{
-            CSV.setOutputFile(dataFile);
             if(data.size()>0){
+                CSV.setOutputFile(dataFile);
                 CSV.outputAllData(dataFile);
             }
         } catch (FileNotFoundException ex) {
