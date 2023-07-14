@@ -100,7 +100,7 @@ public class filechoice extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(modoru)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -116,6 +116,7 @@ public class filechoice extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tourokuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tourokuActionPerformed
