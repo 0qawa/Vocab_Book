@@ -204,7 +204,7 @@ public class quiz extends javax.swing.JFrame {
         csv.CorrectRate(std.getID(),std.getnewrate());
         std.setCSV(csv);
         
-        
+        csv.MakeCSV(name);
         
         //問題と答えをセットする
         this.QA = this.std.setQA();
