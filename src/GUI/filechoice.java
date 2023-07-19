@@ -134,13 +134,17 @@ public class filechoice extends javax.swing.JFrame {
         // TODO add your handling code here:
         String filename = this.name.getText();
         csv = new CSV();
-        if (csv.Filefound(filename)) {
-            csv.ReadCSV(filename);
-            menu mn = new menu(csv, filename);
-            mn.show();
-            dispose();
+        if (!csv.Namecheck(filename)) {
+            if (csv.Filefound(filename)) {
+                csv.ReadCSV(filename);
+                menu mn = new menu(csv, filename);
+                mn.show();
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "ファイルが見つかりません", "エラー", JOptionPane.INFORMATION_MESSAGE);
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "ファイルが見つかりません", "エラー", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "使用できない文字が含まれています", "エラー", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_tourokuActionPerformed
 

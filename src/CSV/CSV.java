@@ -168,7 +168,16 @@ public class CSV {
            return(false);
         }
     }
-
+    
+    //ファイル名に禁則文字が含まれているか確認する
+    public static boolean Namecheck(String name) {
+        String proh;
+        proh = "/|\\\\|\\?|\\*|:|\\||\"|<|>|\\.";
+        Pattern p = Pattern.compile(proh);
+        Matcher m = p.matcher(name);
+        return m.find();
+    }
+    
     public static void MakeCSV() {
         if (filename == null) {
             System.out.println("ERROR");
