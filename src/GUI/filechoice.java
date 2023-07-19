@@ -140,7 +140,7 @@ public class filechoice extends javax.swing.JFrame {
             mn.show();
             dispose();
         } else {
-            JOptionPane.showMessageDialog(this, "ファイルが見つかりません", "結果", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "ファイルが見つかりません", "エラー", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_tourokuActionPerformed
 

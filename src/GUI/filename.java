@@ -134,7 +134,7 @@ public class filename extends javax.swing.JFrame {
             mn.show();
             dispose();
         } else {
-            JOptionPane.showMessageDialog(this, "すでに存在するファイル名です", "結果", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "すでに存在するファイル名です", "エラー", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_tourokuActionPerformed
 
