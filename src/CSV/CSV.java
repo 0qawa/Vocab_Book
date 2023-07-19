@@ -72,6 +72,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
@@ -153,6 +156,16 @@ public class CSV {
             CSV.outputAllData(dataFile);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(CSV.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    //ファイルが存在するか判定する
+    public static boolean Filefound(String name) {
+        Path p = Paths.get(dataDir.getPath() + File.separator + name + ".csv");
+        if (Files.exists(p)){
+            return(true);
+        } else {
+           return(false);
         }
     }
 

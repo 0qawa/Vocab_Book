@@ -9,10 +9,12 @@ package GUI;
  * @author Toui Kodera
  */
 import CSV.CSV;
+import javax.swing.JOptionPane;
 
 public class filechoice extends javax.swing.JFrame {
 
     static CSV csv = null;
+
     /**
      * Creates new form filechoice
      */
@@ -132,10 +134,14 @@ public class filechoice extends javax.swing.JFrame {
         // TODO add your handling code here:
         String filename = this.name.getText();
         csv = new CSV();
-        csv.ReadCSV(filename);
-        menu mn = new menu(csv, filename);
-        mn.show();
-        dispose();
+        if (csv.Filefound(filename)) {
+            csv.ReadCSV(filename);
+            menu mn = new menu(csv, filename);
+            mn.show();
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "ファイルが見つかりません", "結果", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_tourokuActionPerformed
 
     private void modoruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoruActionPerformed

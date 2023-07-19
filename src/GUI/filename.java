@@ -126,12 +126,16 @@ public class filename extends javax.swing.JFrame {
         //登録完了画面へ切り替え
         String filename = this.name.getText();
         csv = new CSV();
-        csv.MakeCSV(filename);
-        csv.ReadCSV(filename);
-        JOptionPane.showMessageDialog(this, "登録完了", "結果", JOptionPane.INFORMATION_MESSAGE);
-        menu mn = new menu(csv, filename);
-        mn.show();
-        dispose();
+        if(csv.Filefound(filename) == false){
+            csv.MakeCSV(filename);
+            csv.ReadCSV(filename);
+            JOptionPane.showMessageDialog(this, "登録完了", "結果", JOptionPane.INFORMATION_MESSAGE);
+            menu mn = new menu(csv, filename);
+            mn.show();
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "すでに存在するファイル名です", "結果", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_tourokuActionPerformed
 
     /**
