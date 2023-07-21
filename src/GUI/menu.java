@@ -6,6 +6,7 @@ package GUI;
 
 import CSV.CSV;
 import book.QandA;
+import javax.swing.JOptionPane;
 import study.Study;
 
 /**
@@ -128,39 +129,42 @@ public class menu extends javax.swing.JFrame {
     private void gakusyuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gakusyuActionPerformed
         // TODO add your handling code here:
         //学習画面へ切り替え
-        quiz qz  = new quiz(csv, name);
-        qz.show();
-        dispose();
-        
-        /*
-        //quizタブの問題を表示（仮）
-        quiz.question.setText("問題");
-        
-        //quizタブの最初の問題番号と正答率を表示(仮)
-        quiz.num.setText("１");
-        quiz.per.setText("１");
-        */
-        
-        //問題リストを受け取る
-        this.QA = std.setQA();
-        
-        
-        //quizタブの最初の問題番号と正答率を表示
-        //問題番号と正解率を受け取り、文字型に直す
-        //this.ID = std.getID();
-        this.ID=1;
-        this.question = QA.getQuestion();
-        this.rate = QA.getCorrectRate() * 100;
-        String st_ID =  ID.toString();
-        String st_rate =  String.valueOf(rate);
-        //Studyクラスのオブジェクトを共有
-        quiz.std = this.std; 
-        
-        //表示
-        quiz.question.setText(this.question);
-        quiz.num.setText(st_ID);
-        quiz.per.setText(st_rate);
-        
+        if(csv.getData().size() < 1){
+            JOptionPane.showMessageDialog(this, "問題が登録されていません", "エラー", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            quiz qz  = new quiz(csv, name);
+            qz.show();
+            dispose();
+
+            /*
+            //quizタブの問題を表示（仮）
+            quiz.question.setText("問題");
+
+            //quizタブの最初の問題番号と正答率を表示(仮)
+            quiz.num.setText("１");
+            quiz.per.setText("１");
+            */
+
+            //問題リストを受け取る
+            this.QA = std.setQA();
+
+
+            //quizタブの最初の問題番号と正答率を表示
+            //問題番号と正解率を受け取り、文字型に直す
+            //this.ID = std.getID();
+            this.ID=1;
+            this.question = QA.getQuestion();
+            this.rate = QA.getCorrectRate() * 100;
+            String st_ID =  ID.toString();
+            String st_rate =  String.valueOf(rate);
+            //Studyクラスのオブジェクトを共有
+            quiz.std = this.std; 
+
+            //表示
+            quiz.question.setText(this.question);
+            quiz.num.setText(st_ID);
+            quiz.per.setText(st_rate);
+        }
     }//GEN-LAST:event_gakusyuActionPerformed
 
     private void kanriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kanriActionPerformed
