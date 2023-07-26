@@ -57,7 +57,11 @@ public class Study {
     private static int setID() {
         setrate();
         Random rand = new Random();
-        float id_f = rand.nextFloat() * totalrate;
+        float r = rand.nextFloat();
+        while(!(r < 1)){
+            r = rand.nextFloat();
+        }
+        float id_f = r * totalrate;
         float sum_select = 0;
         float sum_select_be = 0;
         int i = 0;
