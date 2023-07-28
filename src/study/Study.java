@@ -25,19 +25,23 @@ public class Study {
     private static QandA QA; //出題する問題(QandAクラス)
     private static int n_res, n_cor; //問題の回答回数、正答回数
     private static float newrate; //問題回答後の新しい正解率
-    private static ArrayList<Float> ratelist = new ArrayList<>();; //問題の出題に使用する確率のリスト
+    private static ArrayList<Float> ratelist = new ArrayList<>(); //問題の出題に使用する確率のリスト
     private static float totalrate; //問題の出題に使用するパラメータ
+    private static ArrayList<Integer> setq;
 
     public Study(CSV csv) {
         csvlist = csv;
         list = csvlist.getData();
+        setq = new ArrayList<>();
     }
 
     //出題する問題をセットする
     public static QandA setQA() {
         int size;
         ID = setID();
+        setq.add(ID);
         QA = csvlist.Output(ID);
+        System.out.println(setq);
         return QA;
     }
 
@@ -45,8 +49,15 @@ public class Study {
     private static void setrate() {
         ratelist.clear();
         totalrate = 0;
+        int id = 0;
         for (QandA qalist : list) {
-            float rate = (float)1.01 - qalist.getCorrectRate();
+            float rate;
+            if (setq.contains(id)) {
+                rate = 0;
+            } else {
+                rate = (float) 1.01 - qalist.getCorrectRate();
+            }
+            id++;
             ratelist.add(rate);
             totalrate += rate;
         }
@@ -58,16 +69,16 @@ public class Study {
         setrate();
         Random rand = new Random();
         float r = rand.nextFloat();
-        while(!(r < 1)){
+        while (!(r < 1)) {
             r = rand.nextFloat();
         }
         float id_f = r * totalrate;
         float sum_select = 0;
         float sum_select_be = 0;
         int i = 0;
-        for (float select:ratelist){
+        for (float select : ratelist) {
             sum_select += select;
-            if((sum_select_be <= id_f) && (id_f < sum_select)){
+            if ((sum_select_be <= id_f) && (id_f < sum_select)) {
                 return i;
             }
             i++;
@@ -75,12 +86,11 @@ public class Study {
         }
         return i;
     }
-    
+
     //CSVクラスをセット
-    public static void setCSV(CSV csv){
+    public static void setCSV(CSV csv) {
         csvlist = csv;
     }
-    
 
     //問題番号を返す
     public static int getID() {
@@ -93,7 +103,18 @@ public class Study {
         return newrate;
     }
     
+    public static void qreset(){
+        setq.clear();
+    }
 
+    public static boolean finish(){
+        if(setq.size() < ratelist.size()){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    
     //回答の正誤判定をし、"正解"または"不正解"の文字列を返す
     public static String judge(String answer) {
         if (answer.equals(QA.getAnswer())) {
@@ -108,7 +129,7 @@ public class Study {
             n_res = QA.getNum_res();
             n_cor = QA.getNum_correct();
             newrate = (float) n_cor / (float) n_res;
-            return "不正解";
+            return ("不正解　正解は" + QA.getAnswer());
         }
     }
 }

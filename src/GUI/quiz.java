@@ -56,7 +56,7 @@ public class quiz extends javax.swing.JFrame {
         num.setText("num");
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel2.setText("問目");
+        jLabel2.setText("問題番号：");
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel3.setText("正解率");
@@ -102,10 +102,11 @@ public class quiz extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(222, 222, 222)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(kaitou, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(236, 236, 236))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -117,24 +118,23 @@ public class quiz extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(answer)
                             .addComponent(question, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE))
-                        .addGap(330, 330, 330))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(330, 330, 330))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(219, 219, 219)
-                        .addComponent(modoru, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(257, 257, 257)
-                        .addComponent(num)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
-                        .addGap(159, 159, 159)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(per, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(num)
+                                .addGap(274, 274, 274)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(per, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(modoru, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,8 +144,8 @@ public class quiz extends javax.swing.JFrame {
                     .addComponent(per, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(num))
+                    .addComponent(num)
+                    .addComponent(jLabel2))
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(question, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,24 +168,30 @@ public class quiz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void modoruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoruActionPerformed
+        modoru();
+    }//GEN-LAST:event_modoruActionPerformed
+
+    private void modoru(){
         // TODO add your handling code here:
         //結果画面へ切り替え
         result rs = new result(csv, name);
         rs.setVisible(true);
-        
+
         //このセクションにおける総問題数と正解数を表示
         //総問題数と正解数を文字型に変更
-        String st_n_cor =  this.n_cor.toString();
-        String st_n_res =  this.n_res.toString();
+        String st_n_cor = this.n_cor.toString();
+        String st_n_res = this.n_res.toString();
         result.sum_num.setText(st_n_res);
         result.cor_num.setText(st_n_cor);
-        
-        //このセクションにおける総問題数と正解数をリセット
-        n_cor=0;
-        n_res=0;
-        dispose();
-    }//GEN-LAST:event_modoruActionPerformed
 
+        //このセクションにおける総問題数と正解数をリセット
+        n_cor = 0;
+        n_res = 0;
+        std.qreset();
+        dispose();
+    }
+    
+    
     private void kaitouActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kaitouActionPerformed
         // TODO add your handling code here:
         //入力された解答を受け取る
@@ -208,22 +214,24 @@ public class quiz extends javax.swing.JFrame {
         
         csv.MakeCSV(name);
         
-        //問題と答えをセットする
-        this.QA = this.std.setQA();
         
-        
-        //問題と正答率を更新
-        //問題番号と正解率を受け取り、文字型に直す
-        this.ID = this.std.getID();
-        this.Question = this.QA.getQuestion();
-        this.rate = this.QA.getCorrectRate() * 100;
-        String st_ID =  this.ID.toString();
-        String st_rate =  String.valueOf(this.rate);
-        //問題番号と正解率を表示
-        quiz.question.setText(this.Question);
-        quiz.num.setText(st_ID);
-        quiz.per.setText(st_rate);
-        
+        if (std.finish()){
+            modoru();
+        }else{
+            //問題と答えをセットする
+            this.QA = this.std.setQA();
+            //問題と正答率を更新
+            //問題番号と正解率を受け取り、文字型に直す
+            this.ID = this.std.getID();
+            this.Question = this.QA.getQuestion();
+            this.rate = this.QA.getCorrectRate() * 100;
+            String st_ID = String.format("%03d", this.ID);
+            String st_rate = String.valueOf(this.rate);
+            //問題番号と正解率を表示
+            quiz.question.setText(this.Question);
+            quiz.num.setText(st_ID);
+            quiz.per.setText(st_rate);
+        }
 
     }//GEN-LAST:event_kaitouActionPerformed
 
